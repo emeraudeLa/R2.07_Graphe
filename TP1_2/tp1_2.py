@@ -1,4 +1,6 @@
-#import mygraph as gr
+'''
+Classe tp 1-2
+'''
 
 class Graphe(object):
     def __init__(self, graphe_dict=None):
@@ -82,20 +84,50 @@ class Graphe(object):
             res += str(arete) + " "
         return res
 
-"""
-Une classe Python pour creer et manipuler des graphes
-"""
-if __name__ == "__main__":
-    graphe = {"A" :{"C"},
-        "B" : {"C", "E"},
-        "C" : {"A", "B", "D", "E"},
-        "D" : {"C"},
-        "E" : {"C", "B"},
-        "F" : {}
-    }
-    g = Graphe(graphe)
-    print(g.aretes("A"))
-    print(g.all_sommets)
-    print(g.all_aretes)
+'''
+Classe enfant de classe Graphe (mettre la classe parente entre parentheses)
+'''
+class Graphe2(Graphe):
+    def sommet_degre(self, sommet):
+        """ renvoie le degre du sommet """
+        degre=len(self.aretes(sommet))
+        if(sommet in degre):
+            degre += 1
+        return degre
     
-    #print(g.__list_aretes)
+    def trouve_sommet_isole(self):
+        """ renvoie la liste des sommets isoles """
+        isoles=[]
+        sommets=[]
+        sommets.append(self.all_sommets())
+        for i in range (len(sommets)):
+            if(self.arete(sommets[i]==0)):
+                isoles.append(sommets[i])
+        return isoles
+    
+    def Delta(self):
+        """ le degre maximum """
+        max=0
+        sommets=[]
+        sommets.append(self.all_sommets())
+        for i in range (len(sommets)):
+            if(self.sommet_degre(sommets[i])>max):
+                max = self.sommet_degre(sommets[i])
+        return max
+    
+    def list_degres(self):
+        """ calcule tous les degres et renvoie un
+        tuple de degres decroissant
+        """
+        degres=()
+        deg=0
+        sommets=[]
+        sommets.append(self.all_sommets())
+        for i in range (len(sommets)):
+            deg = self.sommet_degre(sommets[i])
+            degres.append(deg)
+        return degres
+
+    #def trouve_chaine(self, sommet_dep, sommet_arr, chain=None):
+    
+    
