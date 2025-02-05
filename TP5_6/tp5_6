@@ -1,0 +1,16 @@
+
+
+def parcour_largeur():
+    Q = s
+    D = [s,s,s,s,s,s,s,s,s,s,s,s]
+    D[s] = 0;
+    T = []
+    while( len(Q)!=0): 
+        v = defiler(Q)
+    for w in liste :
+        if (D[w] = ∞) :
+            D[w] = D[v] + 1
+            enfiler(Q, w)
+            ajouter(T, vw)
+
+    return (D, T )
